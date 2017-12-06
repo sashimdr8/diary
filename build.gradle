@@ -48,6 +48,7 @@ ext {
     rxJavaVersion = '2.1.0'
     kotlinVersion = '1.1.51'
     databindingCompilerVersion = "3.0.0"
+    slidingRootNavVersion = "1.1.0"
 
     //Testing dependencies
     mockitoVersion = '1.10.19'

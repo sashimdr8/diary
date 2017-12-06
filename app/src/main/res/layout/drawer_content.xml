@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/windowBackground">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:foreground="@color/drawerTransImgForegroundColor"
+            android:background="@drawable/bg_drawer" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvMenu"
+            android:layout_width="240dp"
+            android:background="@android:color/transparent"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+             />
+
+    </RelativeLayout>
+</layout>

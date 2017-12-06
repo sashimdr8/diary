@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#6F51F8</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#EB606B</color>
+    <color name="colorStatusBar">#FF4081</color>
+    <color name="textWhite">#ffffff</color>
+    <color name="windowBackground">#ececec</color>
+    <color name="white">#ffffff</color>
+    <color name="textColorBlack">#323232</color>
+    <color name="bt_red">#EA606B</color>
+    <color name="dark_red">#e32c3b</color>
+    <color name="blue">#8999FC</color>
+    <color name="grey">#8d8d8d</color>
+    <color name="green">#47B25E</color>
+    <color name="light_grey">#d3d3d3</color>
+    <color name="sky_blue">#4E92F2</color>
+    <color name="black_trans_color">#99000000</color>
+    <color name="bluish_green">#5ED2DD</color>
+    <color name="dark_blue">#151050</color>
+    <color name="bg_sold">#A9A9A9</color>
+    <color name="cream">#FCFBE3</color>
+    <color name="drawerTransImgForegroundColor">#886A4EE6</color>
+
 </resources>

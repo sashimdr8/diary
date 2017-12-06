@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="padding_large">20dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_ex_small">4dp</dimen>
+    <dimen name="margin_top_profile_detail">70dp</dimen>
+    <dimen name="textSize">12sp</dimen>
+    <dimen name="textSizeSmall">10sp</dimen>
+    <dimen name="textSizeMedium">14sp</dimen>
+    <dimen name="textSizeLarge">20sp</dimen>
+    <dimen name="small_block">100dp</dimen>
+    <dimen name="textSizeExLarge">24sp</dimen>
+    <dimen name="padding_ex_large">24dp</dimen>
+</resources>
