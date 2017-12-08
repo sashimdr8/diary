@@ -8,9 +8,9 @@ import com.yarolegovich.slidingrootnav.SlidingRootNav
  */
 class HomePresenter : HomeContract.Presenter {
 
-    private lateinit var component: AppComponent
-    private lateinit var view: HomeContract.View
-    private lateinit var slidingRootNav: SlidingRootNav
+    private var component: AppComponent
+    private  var view: HomeContract.View
+    private  var slidingRootNav: SlidingRootNav
 
     constructor(component: AppComponent, view: HomeContract.View,
                 slidingRootNav: SlidingRootNav) {

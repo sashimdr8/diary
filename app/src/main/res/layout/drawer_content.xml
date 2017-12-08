@@ -6,24 +6,51 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/windowBackground">
-        <ImageView
+        android:background="@color/windowBackground"
+        >
+        <RelativeLayout
+            android:id="@+id/ivBgHeader"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:foreground="@color/drawerTransImgForegroundColor"
-            android:background="@drawable/bg_drawer" />
+            android:layout_height="240dp"
+            android:layout_alignParentTop="true">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                android:foreground="@color/drawerTransImgForegroundColor"
+                android:src="@mipmap/bg_drawer_header" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/footer_img_drawer" />
+        </RelativeLayout>
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatBtnMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:backgroundTint="@color/colorPrimary"
+            app:srcCompat="@drawable/ic_dehaze_white" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvMenu"
             android:layout_width="240dp"
-            android:background="@android:color/transparent"
-            android:layout_centerVertical="true"
             android:layout_height="wrap_content"
-             />
+            android:layout_below="@+id/ivBgHeader" />
 
     </RelativeLayout>
 </layout>

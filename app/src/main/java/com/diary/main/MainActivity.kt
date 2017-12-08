@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.annotation.ColorInt
 import android.support.annotation.ColorRes
+import android.support.design.widget.FloatingActionButton
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -21,9 +22,7 @@ import java.util.*
  * Created by brain on 12/5/17.
  */
 class MainActivity : BaseActivity(), DrawerAdapter.OnItemSelectedListener {
-    override fun onItemSelected(position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+
 
     private lateinit var slidingRootNav: SlidingRootNav
     private lateinit var binding: ActivityMainBinding
@@ -47,10 +46,10 @@ class MainActivity : BaseActivity(), DrawerAdapter.OnItemSelectedListener {
         startHomeFragment()
     }
 
-    internal fun startHomeFragment() {
+    private fun startHomeFragment() {
         val homeFragment = HomeFragment()
-       /* HomePresenter(App.component(this),
-                homeFragment, slidingRootNav)*/
+        HomePresenter(App.component(this),
+                homeFragment, slidingRootNav)
         supportFragmentManager.beginTransaction()
                 .replace(R.id.contentFrame, homeFragment)
                 .commit()
@@ -63,9 +62,6 @@ class MainActivity : BaseActivity(), DrawerAdapter.OnItemSelectedListener {
         val adapter = DrawerAdapter(Arrays.asList(
                 createItemFor(TYPE_HOME).setChecked(true),
                 createItemFor(TYPE_DIARY),
-                createItemFor(TYPE_NOTES),
-                createItemFor(TYPE_TODO_LIST),
-                createItemFor(TYPE_CALENDER),
                 createItemFor(TYPE_TAGS),
                 createItemFor(TYPE_TRASH),
                 createItemFor(TYPE_MOOD_STATISTICS),
@@ -80,18 +76,16 @@ class MainActivity : BaseActivity(), DrawerAdapter.OnItemSelectedListener {
         list.adapter = adapter
 
 
-/*
-        val floatingBtn = findViewById(R.id.floatbtnMenu)
-        floatingBtn.setOnClickListener(View.OnClickListener
-        { slidingRootNav.closeMenu() })*/
+        val floatingBtn: FloatingActionButton = findViewById(R.id.floatBtnMenu)
+        floatingBtn.setOnClickListener({ slidingRootNav.closeMenu() })
     }
 
     private fun createItemFor(position: Int): SimpleItem {
         return SimpleItem(screenTitles[position])
-                .withIconTint(color(R.color.textWhite))
-                .withTextTint(color(R.color.textWhite))
-                .withSelectedIconTint(color(R.color.colorPrimaryDark))
-                .withSelectedTextTint(color(R.color.colorPrimaryDark))
+                .withIconTint(color(R.color.textColorBlack))
+                .withTextTint(color(R.color.textColorBlack))
+                .withSelectedIconTint(color(R.color.colorPrimary))
+                .withSelectedTextTint(color(R.color.colorPrimary))
     }
 
     @ColorInt
@@ -101,5 +95,9 @@ class MainActivity : BaseActivity(), DrawerAdapter.OnItemSelectedListener {
 
     private fun loadScreenTitles(): Array<String> {
         return resources.getStringArray(R.array.ld_activityScreenTitles)
+    }
+
+    override fun onItemSelected(position: Int) {
+        slidingRootNav.closeMenu()
     }
 }

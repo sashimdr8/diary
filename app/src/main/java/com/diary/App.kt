@@ -6,18 +6,21 @@ import android.content.Context
 /**
  * Created by brain on 12/5/17.
  */
-class App : Application(){
+class App : Application() {
 
-    private lateinit var component: AppComponent
+    lateinit var component: AppComponent
 
     override fun onCreate() {
         super.onCreate()
         this.component = DaggerComponentInitializer.init(this)
     }
 
-    fun component(context: Context): AppComponent {
-        return (context.applicationContext as App).component
+    companion object {
+        fun component(context: Context): AppComponent {
+            return (context.applicationContext as App).component
+        }
     }
+
 
     private object DaggerComponentInitializer {
 

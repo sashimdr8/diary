@@ -28,6 +28,6 @@ class DataModule {
     @Provides
     @Singleton
     internal fun provideApi(retrofit: Retrofit): Api {
-        return retrofit.create<Api>(Api::class.java!!)
+        return retrofit.create<Api>(Api::class.java)
     }
 }

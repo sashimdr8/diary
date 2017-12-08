@@ -20,4 +20,13 @@ open class BaseActivity : AppCompatActivity() {
 //        App.component(this).inject(this)
     }
 
+
+    fun consumeBackPress(): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    fun onTokenExpired() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 }

@@ -3,9 +3,11 @@
     <color name="colorPrimary">#6F51F8</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#EB606B</color>
+    <color name="drawerTransImgForegroundColor">#886F51F8</color>
+
     <color name="colorStatusBar">#FF4081</color>
     <color name="textWhite">#ffffff</color>
-    <color name="windowBackground">#ececec</color>
+    <color name="windowBackground">#FAFAFA</color>
     <color name="white">#ffffff</color>
     <color name="textColorBlack">#323232</color>
     <color name="bt_red">#EA606B</color>
@@ -20,6 +22,5 @@
     <color name="dark_blue">#151050</color>
     <color name="bg_sold">#A9A9A9</color>
     <color name="cream">#FCFBE3</color>
-    <color name="drawerTransImgForegroundColor">#886A4EE6</color>
 
 </resources>

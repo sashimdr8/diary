@@ -24,14 +24,14 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
 
     public static final int TYPE_HOME = 0;
     public static final int TYPE_DIARY = 1;
-    public static final int TYPE_NOTES = 2;
+    /*public static final int TYPE_NOTES = 2;
     public static final int TYPE_TODO_LIST = 3;
-    public static final int TYPE_CALENDER = 4;
-    public static final int TYPE_TAGS = 5;
-    public static final int TYPE_TRASH = 6;
-    public static final int TYPE_MOOD_STATISTICS = 7;
-    public static final int TYPE_SETTINGS = 8;
-    public static final int TYPE_SHARE = 9;
+    public static final int TYPE_CALENDER = 4;*/
+    public static final int TYPE_TAGS = 2;
+    public static final int TYPE_TRASH = 3;
+    public static final int TYPE_MOOD_STATISTICS = 4;
+    public static final int TYPE_SETTINGS = 5;
+    public static final int TYPE_SHARE = 6;
 
 
     private OnItemSelectedListener listener;
