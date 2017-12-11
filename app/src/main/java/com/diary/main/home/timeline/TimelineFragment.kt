@@ -1,5 +1,6 @@
 package com.diary.main.home.timeline
 
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.diary.BaseFragment
 import com.diary.R
+import com.diary.addDiary.AddDiaryActivity
 import com.diary.databinding.FragmentTimelineBinding
 import com.diary.utils.RecyclerViewMargin
 import java.util.ArrayList
@@ -46,7 +48,11 @@ class TimelineFragment : BaseFragment(), TimelineContract.View {
     }
 
     override fun onOptionClicked(position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        when (position) {
+            0 -> startActivity(Intent(activity, AddDiaryActivity::class.java))
+        }
+
     }
+
 
 }
