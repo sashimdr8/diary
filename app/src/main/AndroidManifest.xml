@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".addDiary.AddDiaryActivity"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize"
+            android:parentActivityName=".main.MainActivity"/>
     </application>
 
 </manifest>

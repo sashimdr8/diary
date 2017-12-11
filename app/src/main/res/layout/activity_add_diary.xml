@@ -11,6 +11,9 @@
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp"
             android:background="@color/colorPrimary">
 
             <TextView
@@ -40,15 +43,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/activity_horizontal_margin"
-                    android:text="How are you feeling?"
+                    android:text="@string/how_are_you_feeling"
                     android:textColor="@color/textColorBlack"
                     android:textSize="@dimen/textSizeMedium" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvSentiments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/vHow"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                    />
 
                 <View
                     android:id="@+id/v"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:layout_below="@id/vHow"
+                    android:alpha=".75"
+                    android:layout_below="@id/rvSentiments"
                     android:background="@color/colorPrimary" />
 
                 <android.support.v7.widget.AppCompatEditText
@@ -64,6 +81,7 @@
                     android:id="@+id/v1"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
+                    android:alpha=".75"
                     android:layout_below="@id/etTitle"
                     android:background="@color/colorPrimary" />
 
@@ -74,6 +92,7 @@
                     android:layout_below="@id/v1"
                     android:gravity="top"
                     android:hint="@string/write_something"
+                    android:layout_marginBottom="20dp"
                     android:padding="@dimen/activity_horizontal_margin"
                     android:textSize="@dimen/textSize"
                     app:backgroundTint="@android:color/transparent" />

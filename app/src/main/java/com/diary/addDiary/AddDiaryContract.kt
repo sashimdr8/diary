@@ -12,8 +12,13 @@ interface AddDiaryContract {
         fun stop()
     }
 
-    interface View : BaseView<Presenter> {
+    interface View : BaseView<Presenter> , OnClickCallback {
 
+    }
+
+
+    interface OnClickCallback {
+        fun onEmojiClicked(position: Int)
     }
 
 }
