@@ -4,6 +4,10 @@ import android.support.annotation.NonNull;
 
 import com.diary.data.model.Diary;
 
+
+
+import java.util.List;
+
 import io.realm.Realm;
 
 /**
@@ -19,4 +23,19 @@ public class DiaryDao {
         mRealm = realm;
     }
 
+    public void saveDiary(final Diary diary) {
+
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.copyToRealmOrUpdate(diary);
+            }
+        });
+
+    }
+
+    public List<Diary> getAllDiary() {
+        return mRealm.where(Diary.class)
+                .findAll();
+    }
 }

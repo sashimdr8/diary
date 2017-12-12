@@ -10,8 +10,10 @@ import android.view.ViewGroup
 import com.diary.BaseFragment
 import com.diary.R
 import com.diary.addDiary.AddDiaryActivity
+import com.diary.data.model.Diary
 import com.diary.databinding.FragmentTimelineBinding
 import com.diary.utils.RecyclerViewMargin
+import com.diary.utils.Utils
 import java.util.ArrayList
 
 /**
@@ -33,6 +35,11 @@ class TimelineFragment : BaseFragment(), TimelineContract.View {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.start()
+    }
+
     private fun showOptions() {
         val options = ArrayList<String>()
         options.add(getString(R.string.add_a_diary))
@@ -46,6 +53,11 @@ class TimelineFragment : BaseFragment(), TimelineContract.View {
     override fun setPresenter(presenter: TimelineContract.Presenter) {
         this.presenter = presenter
     }
+
+    override fun showAllDiary(diary: List<Diary>) {
+       Utils.showSnackbar(activity , diary[0].content)
+    }
+
 
     override fun onOptionClicked(position: Int) {
         when (position) {

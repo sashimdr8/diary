@@ -1,6 +1,5 @@
 package com.diary.addDiary
 
-import android.content.Context
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -25,11 +24,10 @@ class EmojiAdapter(private val emojis: List<Emoji>,
     }
 
     override fun onBindViewHolder(myHolder: Holder, position: Int) {
-        val context: Context = myHolder.binding.root.context
         myHolder.binding.icEmoticon
                 .setImageResource(emojis[position].drawableRes)
         myHolder.binding.root.setOnClickListener({
-            clickedCallBack.onEmojiClicked(myHolder.adapterPosition)
+            clickedCallBack.onEmojiClicked(emojis[myHolder.adapterPosition])
         })
     }
 

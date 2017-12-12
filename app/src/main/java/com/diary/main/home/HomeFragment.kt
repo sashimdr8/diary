@@ -34,10 +34,10 @@ class HomeFragment : HomeContract.View, BaseFragment() {
 
     private fun setUpTabsAndViewPager() {
         var count = 0
-       /* binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Timeline"))
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Notes"))
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Calendar"))*/
-        binding.viewPager.adapter = PagerAdapter(activity!!.supportFragmentManager)
+        /* binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Timeline"))
+         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Notes"))
+         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Calendar"))*/
+        binding.viewPager.adapter = PagerAdapter(activity!!, activity!!.supportFragmentManager)
         binding.tabLayout.setupWithViewPager(binding.viewPager)
         while (count < 3) {
             val inflater: LayoutInflater = LayoutInflater.from(activity)

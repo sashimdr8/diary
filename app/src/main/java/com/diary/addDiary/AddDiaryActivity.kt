@@ -2,16 +2,16 @@ package com.diary.addDiary
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.transition.Visibility
-import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import com.diary.App
 import com.diary.R
 import com.diary.data.model.Emoji
 import com.diary.databinding.ActivityAddDiaryBinding
 import com.diary.main.BaseActivity
 import com.diary.utils.Utils
 import com.diary.utils.Utils.isKeyboardShown
-import android.view.ViewTreeObserver
 
 
 /**
@@ -22,12 +22,14 @@ class AddDiaryActivity : BaseActivity(), AddDiaryContract.View {
 
     private lateinit var presenter: AddDiaryContract.Presenter
     private lateinit var binding: ActivityAddDiaryBinding
+    private lateinit var selectedEmoji: Emoji
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,
                 R.layout.activity_add_diary)
 
+        AddDiaryPresenter(App.component(this), this)
         setSupportActionBar(binding.toolBar)
         assert(supportActionBar != null)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -63,14 +65,34 @@ class AddDiaryActivity : BaseActivity(), AddDiaryContract.View {
                     }
                 })
 
+
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_add_diary, menu)
+        return super.onCreateOptionsMenu(menu)
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.save) {
+            presenter.saveDiary(binding.etTitle.text.toString(),
+                    binding.etDiary.text.toString(), selectedEmoji)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun showDiarySaveSuccess() {
+        Utils.showSnackbar(this, "Diary Saved")
+    }
 
     override fun setPresenter(presenter: AddDiaryContract.Presenter) {
         this.presenter = presenter
     }
 
-    override fun onEmojiClicked(position: Int) {
+    override fun onEmojiClicked(emoji: Emoji) {
+        this.selectedEmoji = emoji
     }
 
 }

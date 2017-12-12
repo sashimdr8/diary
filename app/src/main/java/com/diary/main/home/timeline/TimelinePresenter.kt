@@ -1,19 +1,34 @@
 package com.diary.main.home.timeline
 
 import com.diary.AppComponent
+import com.diary.data.model.Diary
+import com.diary.utils.Utils
 
 /**
  * Created by brain on 12/8/17.
  */
-class TimelinePresenter :TimelineContract.Presenter {
-    constructor(component: AppComponent, view: TimelineContract.View)
+class TimelinePresenter : TimelineContract.Presenter {
+    private var component: AppComponent
+    private var view: TimelineContract.View
+
+    constructor(component: AppComponent, view: TimelineContract.View) {
+        this.component = component
+        this.view = view
+        this.view.setPresenter(this)
+    }
 
 
     override fun stop() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun start() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+        var diary: List<Diary> = component.data().getAllDiary()
+        if (Utils.isEmpty(diary)) {
+//            view.showOptions()
+        } else {
+            view.showAllDiary(diary)
+        }
+
     }
 }
