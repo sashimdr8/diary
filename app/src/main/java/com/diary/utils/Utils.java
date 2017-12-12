@@ -3,8 +3,10 @@ package com.diary.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Rect;
 import android.support.design.widget.Snackbar;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -44,14 +46,45 @@ public class Utils {
         return px;
     }
 
-    public static  int convertDpToInt(float dp , Context context){
+    public static int convertDpToInt(float dp, Context context) {
         Resources r = context.getResources();
         int px = Math.round(TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 14,r.getDisplayMetrics()));
+                TypedValue.COMPLEX_UNIT_DIP, 14, r.getDisplayMetrics()));
         return px;
     }
 
+    public static boolean isKeyboardShown(View rootView) {
+        final int SOFT_KEYBOARD_HEIGHT_DP_THRESHOLD = 128;
 
+        Rect r = new Rect();
+        rootView.getWindowVisibleDisplayFrame(r);
+        DisplayMetrics dm = rootView.getResources().getDisplayMetrics();
+        int heightDiff = rootView.getBottom() - r.bottom;
+        boolean isKeyboardShown = heightDiff > SOFT_KEYBOARD_HEIGHT_DP_THRESHOLD * dm.density;
+
+        return isKeyboardShown;
+    }
+
+
+    public static boolean isSoftKeyboardShown(View v) {
+        InputMethodManager imm = (InputMethodManager) v.getContext()
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        IMMResult result = new IMMResult();
+        int res;
+
+        imm.showSoftInput(v, 0, result);
+
+        // if keyboard doesn't change, handle the keypress
+        res = result.getResult();
+        if (res == InputMethodManager.RESULT_UNCHANGED_SHOWN ||
+                res == InputMethodManager.RESULT_UNCHANGED_HIDDEN) {
+
+            return true;
+        }
+        else
+            return false;
+
+    }
 
 
     /*  public static void handleTokenExpired(Activity activity) {

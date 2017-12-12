@@ -73,6 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/v"
+                    android:fitsSystemWindows="false"
                     android:hint="@string/add_a_title"
                     android:padding="@dimen/activity_horizontal_margin"
                     app:backgroundTint="@android:color/transparent" />
@@ -117,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_edit_options"
                 android:orientation="horizontal"
-                android:padding="@dimen/activity_horizontal_margin">
+                android:padding="@dimen/et_padding">
 
                 <ImageView
                     android:id="@+id/btGallery"

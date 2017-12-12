@@ -1,11 +1,22 @@
 package com.diary.data.local
 
-import android.content.Context
-import com.google.gson.Gson
+import com.diary.data.local.dao.DiaryDao
 import javax.inject.Inject
 
 /**
  * Created by brain on 12/5/17.
  */
-class LocalRepo @Inject constructor(context: Context, private val gson: Gson){
+class LocalRepo {
+
+    private val realmDbManager: RealmDbManager
+    private val diaryDao: DiaryDao
+
+    @Inject constructor(realmDbManager: RealmDbManager) {
+
+        this.realmDbManager = realmDbManager
+        realmDbManager.open()
+        diaryDao = this.realmDbManager.createDao()
+
+    }
+
 }

@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.diary.data.AppData
 import com.diary.data.local.LocalRepo
+import com.diary.data.local.RealmDbManager
 import com.diary.data.remote.Api
 import com.diary.data.remote.RemoteRepo
 import dagger.Module
@@ -31,6 +32,11 @@ class AppModule(var app: Context) {
     @Singleton
     fun provideRemoteRepo(api: Api, gson: Gson): RemoteRepo {
         return RemoteRepo(api, gson)
+    }
+
+    @Provides
+    internal fun provideRealmDbManager(): RealmDbManager {
+        return RealmDbManager()
     }
 
     @Provides

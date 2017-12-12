@@ -13,4 +13,6 @@
     <dimen name="small_block">100dp</dimen>
     <dimen name="textSizeExLarge">24sp</dimen>
     <dimen name="padding_ex_large">24dp</dimen>
+    <dimen name="et_padding">16dp</dimen>
+    <dimen name="emoji_size">50dp</dimen>
 </resources>
