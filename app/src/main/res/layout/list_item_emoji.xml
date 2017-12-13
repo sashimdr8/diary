@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.v7.widget.AppCompatImageView
+
+    <CheckBox
         android:id="@+id/icEmoticon"
         android:layout_width="@dimen/emoji_size"
         android:layout_height="@dimen/emoji_size"
-        android:clickable="true"
-        android:focusable="true"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        />
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:button="@null"
+        android:foreground="@drawable/bg_emoji_selector"
+        android:text="" />
+
+
 </layout>

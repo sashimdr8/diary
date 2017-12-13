@@ -91,8 +91,8 @@ class AddDiaryActivity : BaseActivity(), AddDiaryContract.View {
         this.presenter = presenter
     }
 
-    override fun onEmojiClicked(emoji: Emoji) {
-        this.selectedEmoji = emoji
+    override fun onEmojiClicked(position: Emoji) {
+        this.selectedEmoji = position
     }
 
 }

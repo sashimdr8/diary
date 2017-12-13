@@ -2,6 +2,7 @@ package com.diary.main.home
 
 import com.diary.BasePresenter
 import com.diary.BaseView
+import com.diary.data.model.Diary
 import com.yarolegovich.slidingrootnav.SlidingRootNav
 
 /**
@@ -20,5 +21,7 @@ interface HomeContract {
 
     interface OnClickCallback {
         fun onOptionClicked(position: Int)
+
+        fun onItemClicked(diary : Diary)
     }
 }

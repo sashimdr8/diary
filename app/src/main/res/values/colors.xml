@@ -23,4 +23,9 @@
     <color name="bg_sold">#A9A9A9</color>
     <color name="cream">#FCFBE3</color>
 
+    <color name="fabRed">#F44336</color>
+    <color name="fabNeutral">#33000000</color>
+
+
+
 </resources>

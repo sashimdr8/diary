@@ -120,23 +120,16 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/et_padding">
 
+
                 <ImageView
-                    android:id="@+id/btGallery"
+                    android:id="@+id/btAddPhoto"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginEnd="@dimen/padding_small"
                     android:layout_marginRight="@dimen/padding_small"
                     android:layout_marginLeft="@dimen/padding_small"
                     android:layout_marginStart="@dimen/padding_small"
-                    app:srcCompat="@drawable/ic_gallary_24dp" />
-
-                <ImageView
-                    android:id="@+id/btCamera"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginEnd="@dimen/padding_small"
-                    android:layout_marginRight="@dimen/padding_small"
-                    app:srcCompat="@drawable/ic_camera_white_24dp" />
+                    app:srcCompat="@drawable/ic_add_a_photo" />
 
                 <ImageView
                     android:id="@+id/btRecord"

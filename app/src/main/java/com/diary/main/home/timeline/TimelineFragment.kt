@@ -22,6 +22,7 @@ import java.util.ArrayList
 class TimelineFragment : BaseFragment(), TimelineContract.View {
 
 
+
     private lateinit var binding: FragmentTimelineBinding
     private lateinit var presenter: TimelineContract.Presenter
 
@@ -55,7 +56,10 @@ class TimelineFragment : BaseFragment(), TimelineContract.View {
     }
 
     override fun showAllDiary(diary: List<Diary>) {
-       Utils.showSnackbar(activity , diary[0].content)
+        binding.rvOptions.visibility = View.GONE
+        binding.rvTimeline.layoutManager = GridLayoutManager(activity, 2)
+        binding.rvTimeline.addItemDecoration(RecyclerViewMargin(30, 2))
+        binding.rvTimeline.adapter = TimelineAdapter(diary, this)
     }
 
 
@@ -63,6 +67,10 @@ class TimelineFragment : BaseFragment(), TimelineContract.View {
         when (position) {
             0 -> startActivity(Intent(activity, AddDiaryActivity::class.java))
         }
+
+    }
+
+    override fun onItemClicked(diary: Diary) {
 
     }
 
