@@ -25,7 +25,7 @@ class TimelinePresenter : TimelineContract.Presenter {
 
         var diary: List<Diary> = component.data().getAllDiary()
         if (Utils.isEmpty(diary)) {
-//            view.showOptions()
+            view.showOptions()
         } else {
             view.showAllDiary(diary)
         }

@@ -15,6 +15,7 @@ interface TimelineContract {
 
     interface View : BaseView<Presenter>, HomeContract.OnClickCallback {
         fun showAllDiary(diary: List<Diary>)
+        fun showOptions()
 
     }
 }
