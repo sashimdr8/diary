@@ -36,12 +36,15 @@ class TimelineAdapter(private val diary: List<Diary>,
         if (position == 0) {
             bindOptionsView(myHolder as OptionHolder, position)
         } else {
-            bindTimelineView(myHolder as Holder, position - 1)
+            bindTimelineView(myHolder as Holder, position-1)
         }
     }
 
     private fun bindOptionsView(myHolder: TimelineAdapter.OptionHolder,
                                 position: Int) {
+        myHolder.binding.tvAddDiary.setOnClickListener(({
+            clickedCallBack.onOptionClicked(0)
+        }))
 
 
     }
@@ -53,7 +56,7 @@ class TimelineAdapter(private val diary: List<Diary>,
         myHolder.binding.tvTime.text = diary[position].time
         myHolder.binding.tvFeelings.text = """Feeling ${diary[position].emoji.name}"""
         myHolder.binding.root.setOnClickListener({
-            clickedCallBack.onItemClicked(diary[myHolder.adapterPosition])
+            clickedCallBack.onItemClicked(diary[myHolder.adapterPosition-1])
         })
 
     }

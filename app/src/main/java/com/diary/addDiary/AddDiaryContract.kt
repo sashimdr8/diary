@@ -2,6 +2,7 @@ package com.diary.addDiary
 
 import com.diary.BasePresenter
 import com.diary.BaseView
+import com.diary.data.model.Diary
 import com.diary.data.model.Emoji
 
 /**
@@ -11,11 +12,14 @@ interface AddDiaryContract {
 
     interface Presenter : BasePresenter {
         fun stop()
+        fun saveDiary(id: Long, text: String, text1: String, selectedEmoji: Emoji)
         fun saveDiary(text: String, text1: String, selectedEmoji: Emoji)
+        fun getDiary(diaryId: Long)
     }
 
-    interface View : BaseView<Presenter> , OnClickCallback {
+    interface View : BaseView<Presenter>, OnClickCallback {
         fun showDiarySaveSuccess()
+        fun showDiaryDetails(diary: Diary)
 
     }
 

@@ -2,22 +2,30 @@ package com.diary.data.model;
 
 import android.support.annotation.DrawableRes;
 
+import org.parceler.Parcel;
+
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
 
 /**
  * Created by brain on 12/12/17.
  */
+
 
 public class Emoji extends RealmObject {
 
     @DrawableRes
     private int drawableRes;
     private String name;
+    @PrimaryKey
+    private int id;
 
 
-    public Emoji setData(@DrawableRes int drawableRes, String name) {
+    public Emoji setData(@DrawableRes int drawableRes, String name, int id) {
         this.drawableRes = drawableRes;
         this.name = name;
+        this.id = id;
         return this;
     }
 
@@ -35,5 +43,13 @@ public class Emoji extends RealmObject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

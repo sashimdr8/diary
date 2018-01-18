@@ -15,7 +15,7 @@ class EmojiAdapter(private val emojis: List<Emoji>,
                    private val clickedCallBack: AddDiaryContract.OnClickCallback)
     : RecyclerView.Adapter<EmojiAdapter.Holder>() {
 
-     var selectedIndex = -1
+    var selectedIndex = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             Holder {
@@ -36,6 +36,12 @@ class EmojiAdapter(private val emojis: List<Emoji>,
     }
 
 
+    fun emojiClicked(position: Int) :Emoji {
+        selectedIndex = position
+        notifyDataSetChanged()
+        return emojis[position]
+    }
+
     override fun getItemCount(): Int {
         return emojis.size
     }
@@ -43,7 +49,7 @@ class EmojiAdapter(private val emojis: List<Emoji>,
 
     inner class Holder(val binding: ListItemEmojiBinding)
         : RecyclerView.ViewHolder(binding.root) {
-         fun bindView() {
+        fun bindView() {
             binding.root.setOnClickListener { view ->
                 clickedCallBack.onEmojiClicked(emojis[adapterPosition])
                 selectedIndex = adapterPosition

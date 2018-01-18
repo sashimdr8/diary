@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.sickmartian.calendarview.MonthView
+            xmlns:calendar_view="http://schemas.android.com/apk/res-auto"
+            calendar_view:textSize="12sp"
+            calendar_view:activeTextColor="@color/colorPrimaryText"
+            calendar_view:inactiveTextColor="@color/colorSecondaryText"
+            calendar_view:activeBackgroundColor="@color/colorCalendarDayBackground"
+            calendar_view:selectedBackgroundColor="@color/selectedDayBackground"
+            calendar_view:inactiveBackgroundColor="@color/notThisMonthDayBackground"
+            calendar_view:currentDayDecorationDrawable="@drawable/bg_emoji"
+            calendar_view:currentDayDecorationSize="24dp"
+            calendar_view:currentDayTextColor="@color/colorInvertedText"
+            calendar_view:showOverflow="false"
+            calendar_view:overflowColor="@color/colorPrimary"
+            calendar_view:overflowHeight="2dp"
+            calendar_view:separatorColor="@color/colorCalendarDivider"
+            android:id="@+id/monthView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+
+</layout>

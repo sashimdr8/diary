@@ -19,8 +19,18 @@ internal constructor(private val localRepo: LocalRepo,
         this.localRepo.saveDiary(title, diary, selectedEmoji)
     }
 
+    fun saveDiary(id: Long, title: String, diary: String, selectedEmoji: Emoji) {
+
+        this.localRepo.saveDiary(id, title, diary, selectedEmoji)
+    }
+
     fun getAllDiary(): List<Diary> {
         return this.localRepo.getAllDiary()
+    }
+
+    fun getDiary(diaryId: Long): Diary {
+
+        return this.localRepo.getDiary(diaryId)
     }
 
 

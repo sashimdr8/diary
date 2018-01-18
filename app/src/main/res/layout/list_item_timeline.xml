@@ -57,6 +57,7 @@
                 android:textSize="@dimen/textSize"
                 android:paddingLeft="@dimen/padding_ex_small"
                 android:paddingTop="@dimen/padding_ex_small"
+                android:paddingBottom="@dimen/padding_ex_small"
                 android:layout_toRightOf="@id/icEmoji"
                 android:layout_toEndOf="@id/icEmoji"
                 />

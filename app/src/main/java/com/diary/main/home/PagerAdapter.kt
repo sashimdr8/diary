@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.diary.App
+import com.diary.main.home.calendar.CalendarFragment
+import com.diary.main.home.calendar.CalendarPresenter
 import com.diary.main.home.timeline.TimelineFragment
 import com.diary.main.home.timeline.TimelinePresenter
 
@@ -39,10 +41,10 @@ class PagerAdapter(private val context: FragmentActivity,
             }
             2 // Fragment # 1 - This will show SecondFragment
             -> {
-                val timelineFragment = TimelineFragment()
-                TimelinePresenter(App.component(context),
-                        timelineFragment)
-                return timelineFragment
+                val calendarFragment = CalendarFragment()
+                CalendarPresenter(App.component(context),
+                        calendarFragment)
+                return calendarFragment
             }
             else -> {
                 val timelineFragment = TimelineFragment()

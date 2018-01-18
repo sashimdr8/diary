@@ -4,13 +4,16 @@ import android.support.annotation.ColorInt;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.parceler.Parcel;
 
+import io.realm.DiaryRealmProxy;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by brain on 12/12/17.
  */
+
 
 public class Diary extends RealmObject {
 
@@ -100,7 +103,6 @@ public class Diary extends RealmObject {
         this.date = date;
         this.time = time;
         this.emoji = selectedEmoji;
-
         return this;
     }
 }

@@ -30,8 +30,19 @@ class LocalRepo {
                 "Jan 24", "5:00pm", selectedEmoji))
     }
 
+    fun saveDiary(id: Long, title: String, diary: String, selectedEmoji: Emoji) {
+        diaryDao.saveDiary(Diary().setData(id,
+                title, diary, "san-serif", Color.parseColor("#ededed"),
+                "Jan 24", "5:00pm", selectedEmoji))
+    }
+
     fun getAllDiary(): List<Diary> {
         return diaryDao.allDiary
+    }
+
+    fun getDiary(diaryId: Long): Diary {
+        return diaryDao.getDiary(diaryId)
+
     }
 
 

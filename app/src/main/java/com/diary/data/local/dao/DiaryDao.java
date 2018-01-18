@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.diary.data.model.Diary;
 
 
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -38,4 +39,12 @@ public class DiaryDao {
         return mRealm.where(Diary.class)
                 .findAll();
     }
+
+
+    public Diary getDiary(long diaryId) {
+        return mRealm.where(Diary.class)
+                .equalTo("id",diaryId)
+                .findFirst();
+    }
+
 }

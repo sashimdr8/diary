@@ -7,23 +7,30 @@
 
     <color name="colorStatusBar">#FF4081</color>
     <color name="textWhite">#ffffff</color>
+    <color name="colorPrimaryText">#ffffff</color>
     <color name="windowBackground">#FAFAFA</color>
     <color name="white">#ffffff</color>
     <color name="textColorBlack">#323232</color>
+    <color name="colorSecondaryText">#323232</color>
     <color name="bt_red">#EA606B</color>
     <color name="dark_red">#e32c3b</color>
     <color name="blue">#8999FC</color>
+    <color name="colorCalendarDayBackground">#8999FC</color>
     <color name="grey">#8d8d8d</color>
+    <color name="selectedDayBackground">#8d8d8d</color>
     <color name="green">#47B25E</color>
     <color name="light_grey">#d3d3d3</color>
     <color name="sky_blue">#4E92F2</color>
     <color name="black_trans_color">#99000000</color>
     <color name="bluish_green">#5ED2DD</color>
+    <color name="notThisMonthDayBackground">#5ED2DD</color>
     <color name="dark_blue">#151050</color>
+    <color name="colorInvertedText">#151050</color>
     <color name="bg_sold">#A9A9A9</color>
     <color name="cream">#FCFBE3</color>
 
     <color name="fabRed">#F44336</color>
+    <color name="colorCalendarDivider">#F44336</color>
     <color name="fabNeutral">#33000000</color>
 
 

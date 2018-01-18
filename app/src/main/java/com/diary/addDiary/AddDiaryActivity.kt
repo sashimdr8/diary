@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import com.diary.App
 import com.diary.R
+import com.diary.data.model.Diary
 import com.diary.data.model.Emoji
 import com.diary.databinding.ActivityAddDiaryBinding
 import com.diary.main.BaseActivity
@@ -23,6 +24,9 @@ class AddDiaryActivity : BaseActivity(), AddDiaryContract.View {
     private lateinit var presenter: AddDiaryContract.Presenter
     private lateinit var binding: ActivityAddDiaryBinding
     private lateinit var selectedEmoji: Emoji
+    private lateinit var emojiAdapter: EmojiAdapter
+    var diaryId: Long = -1
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,21 +37,27 @@ class AddDiaryActivity : BaseActivity(), AddDiaryContract.View {
         setSupportActionBar(binding.toolBar)
         assert(supportActionBar != null)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-
         initViews()
+
+        if (intent != null) {
+            if (intent.extras != null) {
+                diaryId = intent.getLongExtra("DiaryId", -1)
+                presenter.getDiary(diaryId)
+            }
+        }
 
 
     }
 
     private fun initViews() {
         val emojis = ArrayList<Emoji>()
-        emojis.add(Emoji().setData(R.drawable.emoji_bad, "Bad"))
-        emojis.add(Emoji().setData(R.drawable.emoji_cry, "Cry"))
-        emojis.add(Emoji().setData(R.drawable.emoji_happy, "happy"))
-        emojis.add(Emoji().setData(R.drawable.emoji_laugh, "So Happy"))
-        emojis.add(Emoji().setData(R.drawable.emoji_love, "Love"))
-
-        binding.rvSentiments.adapter = EmojiAdapter(emojis, this)
+        emojis.add(Emoji().setData(R.drawable.emoji_bad, "Bad", 0))
+        emojis.add(Emoji().setData(R.drawable.emoji_cry, "Cry", 1))
+        emojis.add(Emoji().setData(R.drawable.emoji_happy, "happy", 2))
+        emojis.add(Emoji().setData(R.drawable.emoji_laugh, "So Happy", 3))
+        emojis.add(Emoji().setData(R.drawable.emoji_love, "Love", 4))
+        emojiAdapter = EmojiAdapter(emojis, this)
+        binding.rvSentiments.adapter = emojiAdapter
 
         binding.etDiary.viewTreeObserver
                 .addOnGlobalLayoutListener({
@@ -76,16 +86,31 @@ class AddDiaryActivity : BaseActivity(), AddDiaryContract.View {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.save) {
-            presenter.saveDiary(binding.etTitle.text.toString(),
-                    binding.etDiary.text.toString(), selectedEmoji)
-            return true
+            return if (diaryId.compareTo(-1) == 0) {
+                presenter.saveDiary(binding.etTitle.text.toString(),
+                        binding.etDiary.text.toString(), selectedEmoji)
+                true
+            } else {
+                presenter.saveDiary(diaryId, binding.etTitle.text.toString(),
+                        binding.etDiary.text.toString(), selectedEmoji)
+                true
+            }
+
         }
         return super.onOptionsItemSelected(item)
     }
 
     override fun showDiarySaveSuccess() {
         Utils.showSnackbar(this, "Diary Saved")
+        finish()
     }
+
+    override fun showDiaryDetails(diary: Diary) {
+        binding.etDiary.setText(diary.content)
+        binding.etTitle.setText(diary.title)
+        selectedEmoji = emojiAdapter.emojiClicked(diary.emoji.id)
+    }
+
 
     override fun setPresenter(presenter: AddDiaryContract.Presenter) {
         this.presenter = presenter
