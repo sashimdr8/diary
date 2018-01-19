@@ -13,44 +13,91 @@
 
             <ImageView
                 android:id="@+id/icAddOption"
-                android:layout_width="@dimen/emoji_size"
-                android:layout_height="@dimen/emoji_size"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_centerHorizontal="true"
                 app:srcCompat="@drawable/ic_add_option" />
 
-            <TextView
-                android:id="@+id/tvAddDiary"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/icAddOption"
-                android:layout_centerHorizontal="true"
-                android:layout_toEndOf="@id/icAddOption"
-                android:layout_toRightOf="@id/icAddOption"
-                android:paddingTop="@dimen/padding_small"
-                android:textSize="@dimen/textSizeMedium"
-                android:text="@string/add_a_diary_1" />
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvAddNote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvAddDiary"
-                android:layout_centerHorizontal="true"
-                android:layout_toEndOf="@id/icAddOption"
-                android:layout_toRightOf="@id/icAddOption"
-                android:textSize="@dimen/textSizeMedium"
-                android:text="@string/add_a_note_1" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/btAddDiary"
+                    android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvAddToDo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvAddNote"
-                android:layout_centerHorizontal="true"
-                android:layout_toEndOf="@id/icAddOption"
-                android:layout_toRightOf="@id/icAddOption"
-                android:textSize="@dimen/textSizeMedium"
-                android:text="@string/add_a_to_do_1" />
+                    <ImageView
+                        android:id="@+id/icDiary"
+                        android:layout_width="@dimen/ic_size_large"
+                        android:layout_height="@dimen/ic_size_large"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/ic_to_do" />
+
+                    <TextView
+                        android:id="@+id/tvAddDiary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="2dp"
+                        android:text="@string/diary"
+                        android:textSize="@dimen/textSizeMedium" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:id="@+id/btAddNote"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/icNote"
+                        android:layout_width="@dimen/ic_size_large"
+                        android:layout_height="@dimen/ic_size_large"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/ic_note" />
+
+                    <TextView
+                        android:id="@+id/tvAddNote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="2dp"
+                        android:text="@string/note"
+                        android:textSize="@dimen/textSizeMedium" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/btAddTodo"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/icTodo"
+                        android:layout_width="@dimen/ic_size_large"
+                        android:layout_height="@dimen/ic_size_large"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/ic_to_do" />
+
+                    <TextView
+                        android:id="@+id/tvAddToDo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="2dp"
+                        android:text="@string/to_do"
+                        android:textSize="@dimen/textSizeMedium" />
+                </LinearLayout>
+            </LinearLayout>
+
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

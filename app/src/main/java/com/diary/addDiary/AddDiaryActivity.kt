@@ -23,7 +23,7 @@ class AddDiaryActivity : BaseActivity(), AddDiaryContract.View {
 
     private lateinit var presenter: AddDiaryContract.Presenter
     private lateinit var binding: ActivityAddDiaryBinding
-    private lateinit var selectedEmoji: Emoji
+    private var selectedEmoji: Emoji = Emoji()
     private lateinit var emojiAdapter: EmojiAdapter
     var diaryId: Long = -1
 

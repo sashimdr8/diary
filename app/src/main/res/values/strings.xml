@@ -11,4 +11,7 @@
     <string name="write_something">Write something...</string>
     <string name="how_are_you_feeling">How are you feeling?</string>
     <string name="save">Save</string>
+    <string name="diary">Diary</string>
+    <string name="note">Note</string>
+    <string name="to_do">To do</string>
 </resources>

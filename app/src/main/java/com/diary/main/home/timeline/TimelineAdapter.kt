@@ -3,6 +3,7 @@ package com.diary.main.home.timeline
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.diary.R
 import com.diary.data.model.Diary
@@ -36,13 +37,13 @@ class TimelineAdapter(private val diary: List<Diary>,
         if (position == 0) {
             bindOptionsView(myHolder as OptionHolder, position)
         } else {
-            bindTimelineView(myHolder as Holder, position-1)
+            bindTimelineView(myHolder as Holder, position - 1)
         }
     }
 
     private fun bindOptionsView(myHolder: TimelineAdapter.OptionHolder,
                                 position: Int) {
-        myHolder.binding.tvAddDiary.setOnClickListener(({
+        myHolder.binding.btAddDiary.setOnClickListener(({
             clickedCallBack.onOptionClicked(0)
         }))
 
@@ -50,13 +51,18 @@ class TimelineAdapter(private val diary: List<Diary>,
     }
 
     private fun bindTimelineView(myHolder: TimelineAdapter.Holder, position: Int) {
-        myHolder.binding.icEmoji.setImageResource(diary[position].emoji.drawableRes)
+        if (diary[position].emoji.name != null) {
+            myHolder.binding.icEmoji.setImageResource(diary[position].emoji.drawableRes)
+            myHolder.binding.tvFeelings.text = """Feeling ${diary[position].emoji.name}"""
+        } else {
+            myHolder.binding.tvFeelings.visibility = View.GONE
+            myHolder.binding.icEmoji.visibility = View.GONE
+        }
         myHolder.binding.tvTitle.text = diary[position].title
         myHolder.binding.tvContent.text = diary[position].content
         myHolder.binding.tvTime.text = diary[position].time
-        myHolder.binding.tvFeelings.text = """Feeling ${diary[position].emoji.name}"""
         myHolder.binding.root.setOnClickListener({
-            clickedCallBack.onItemClicked(diary[myHolder.adapterPosition-1])
+            clickedCallBack.onItemClicked(diary[myHolder.adapterPosition - 1])
         })
 
     }
