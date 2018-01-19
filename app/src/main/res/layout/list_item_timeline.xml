@@ -67,6 +67,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/padding_small"
                 android:textSize="@dimen/textSize"
+                android:maxLines="3"
                 android:layout_below="@id/icEmoji" />
 
             <ImageView
