@@ -1,13 +1,20 @@
 package com.diary.data.model;
 
+import io.realm.RealmObject;
+
 /**
  * Created by root on 1/19/18.
  */
 
-public class Attachment {
+public class Attachment extends RealmObject {
 
     private int type; // 0 for image , 1 for audio
-    private String image;
+    private String filePath;
+
+    public void setData(int type, String filePath) {
+        this.type = type;
+        this.filePath = filePath;
+    }
 
     public int getType() {
         return type;
@@ -17,11 +24,11 @@ public class Attachment {
         this.type = type;
     }
 
-    public String getImage() {
-        return image;
+    public String getFilePath() {
+        return filePath;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 }

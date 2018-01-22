@@ -6,7 +6,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.parceler.Parcel;
 
-import io.realm.DiaryRealmProxy;
+import java.util.ArrayList;
+import java.util.List;
+
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -27,6 +30,15 @@ public class Diary extends RealmObject {
     private String date;
     private String time;
     private Emoji emoji;
+    private RealmList<Attachment> attachments;
+
+    public RealmList<Attachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(RealmList<Attachment> attachments) {
+        this.attachments = attachments;
+    }
 
     public String getTitle() {
         return title;
@@ -94,7 +106,8 @@ public class Diary extends RealmObject {
 
     public Diary setData(long id, String title,
                          String content, String font, @ColorInt int color,
-                         String date, String time, Emoji selectedEmoji) {
+                         String date, String time,
+                         Emoji selectedEmoji, RealmList<Attachment> attachments) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -103,6 +116,7 @@ public class Diary extends RealmObject {
         this.date = date;
         this.time = time;
         this.emoji = selectedEmoji;
+        this.attachments = attachments;
         return this;
     }
 }

@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.diary.R
 import com.diary.data.model.Attachment
 import com.diary.databinding.ListItemAttachmentBinding
+import io.realm.RealmList
 
 /**
  * Created by root on 1/19/18.
@@ -20,6 +21,7 @@ class AttachmentAdapter
     private val context: Context
     private val clickedCallBack: AddDiaryContract.OnClickCallback
     private val attachments: ArrayList<Attachment>
+
     constructor(context: Context, clickedCallBack: AddDiaryContract.OnClickCallback) : super() {
         this.context = context
         this.clickedCallBack = clickedCallBack
@@ -34,15 +36,34 @@ class AttachmentAdapter
         return Holder(binding)
     }
 
-    fun add (attachment: Attachment){
+    fun add(attachment: Attachment) {
         attachments.add(attachment)
         notifyDataSetChanged()
     }
 
+    fun add(attachments: List<Attachment>) {
+        this.attachments.addAll(attachments)
+        notifyDataSetChanged()
+    }
+
+
+    fun getAttachments(): List<Attachment> {
+        return attachments
+    }
+
     override fun onBindViewHolder(myHolder: Holder, position: Int) {
 
-        Glide.with(context).load(attachments[position].image)
+        Glide.with(context).load(attachments[position].filePath)
                 .into(myHolder.binding.image)
+
+        myHolder.binding.btDelete.setOnClickListener({
+            clickedCallBack.onAttachmentDeleted(attachments[myHolder.adapterPosition])
+            attachments.remove(attachments[myHolder.adapterPosition])
+            notifyDataSetChanged()
+        })
+        myHolder.binding.root.setOnClickListener({
+            clickedCallBack.onAttachmentClicked(attachments[myHolder.adapterPosition])
+        })
 //        myHolder.binding.icEmoticon
 //                .setBackgroundResource([position].drawableRes)
 
@@ -56,6 +77,7 @@ class AttachmentAdapter
 
     inner class Holder(val binding: ListItemAttachmentBinding)
         : RecyclerView.ViewHolder(binding.root)
+
 
 
 }

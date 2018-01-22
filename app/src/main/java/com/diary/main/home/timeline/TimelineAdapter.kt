@@ -1,15 +1,18 @@
 package com.diary.main.home.timeline
 
+import android.content.Context
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.diary.R
 import com.diary.data.model.Diary
 import com.diary.databinding.LayoutAddOptionsBinding
 import com.diary.databinding.ListItemTimelineBinding
 import com.diary.main.home.HomeContract
+import com.diary.utils.Utils.isEmpty
 
 /**
  * Created by brain on 12/13/17.
@@ -61,6 +64,11 @@ class TimelineAdapter(private val diary: List<Diary>,
         myHolder.binding.tvTitle.text = diary[position].title
         myHolder.binding.tvContent.text = diary[position].content
         myHolder.binding.tvTime.text = diary[position].time
+        if (!isEmpty(diary[position].attachments)) {
+            myHolder.binding.ivImage.visibility = View.VISIBLE
+            Glide.with(myHolder.binding.root.context).load(diary[position].attachments[0].filePath)
+                    .into(myHolder.binding.ivImage)
+        }
         myHolder.binding.root.setOnClickListener({
             clickedCallBack.onItemClicked(diary[myHolder.adapterPosition - 1])
         })

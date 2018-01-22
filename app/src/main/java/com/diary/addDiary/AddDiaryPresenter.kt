@@ -2,20 +2,21 @@ package com.diary.addDiary
 
 import android.app.Activity
 import com.diary.AppComponent
+import com.diary.data.model.Attachment
 import com.diary.data.model.Diary
 import com.diary.data.model.Emoji
 import com.esafirm.imagepicker.features.ImagePicker
+import io.realm.RealmList
 
 /**
  * Created by brain on 12/8/17.
  */
 class AddDiaryPresenter : AddDiaryContract.Presenter {
     private val activity: Activity
+
     companion object {
         val REQUEST_CODE_PICKER: Int = 123
     }
-
-
 
 
     private var component: AppComponent
@@ -48,14 +49,16 @@ class AddDiaryPresenter : AddDiaryContract.Presenter {
                 .start(REQUEST_CODE_PICKER)
     }
 
-    override fun saveDiary(title: String, diary: String, selectedEmoji: Emoji) {
-        component.data().saveDiary(title, diary, selectedEmoji)
+    override fun saveDiary(title: String, diary: String,
+                           selectedEmoji: Emoji, attachments: List<Attachment>) {
+        component.data().saveDiary(title, diary, selectedEmoji ,attachments)
         view.showDiarySaveSuccess()
 
     }
 
-    override fun saveDiary(id: Long, title: String, diary: String, selectedEmoji: Emoji) {
-        component.data().saveDiary(id, title, diary, selectedEmoji)
+    override fun saveDiary(id: Long, title: String, diary: String
+                           , selectedEmoji: Emoji, attachments: List<Attachment>) {
+        component.data().saveDiary(id, title, diary, selectedEmoji , attachments)
         view.showDiarySaveSuccess()
     }
 

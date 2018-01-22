@@ -15,12 +15,11 @@ import com.diary.data.model.Diary
 import com.diary.data.model.Emoji
 import com.diary.databinding.ActivityAddDiaryBinding
 import com.diary.main.BaseActivity
+import com.diary.utils.Constants.TYPE_IMAGE
 import com.diary.utils.Utils
 import com.diary.utils.Utils.isKeyboardShown
-import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.model.Image
 import okhttp3.MediaType
-import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
 
@@ -35,6 +34,7 @@ class AddDiaryActivity : BaseActivity(), AddDiaryContract.View {
     private lateinit var binding: ActivityAddDiaryBinding
     private var selectedEmoji: Emoji = Emoji()
     private lateinit var emojiAdapter: EmojiAdapter
+    private lateinit var attachmentAdapter: AttachmentAdapter
 
     var diaryId: Long = -1
 
@@ -58,9 +58,7 @@ class AddDiaryActivity : BaseActivity(), AddDiaryContract.View {
         }
 
         binding.btAddPhoto.setOnClickListener({
-
             presenter.startImagePicker()
-
         })
 
     }
@@ -74,6 +72,8 @@ class AddDiaryActivity : BaseActivity(), AddDiaryContract.View {
         emojis.add(Emoji().setData(R.drawable.emoji_love, "Love", 4))
         emojiAdapter = EmojiAdapter(emojis, this)
         binding.rvSentiments.adapter = emojiAdapter
+        attachmentAdapter = AttachmentAdapter(this, this)
+        binding.rvAttachments.adapter = attachmentAdapter
 
         binding.etDiary.viewTreeObserver
                 .addOnGlobalLayoutListener({
@@ -98,10 +98,13 @@ class AddDiaryActivity : BaseActivity(), AddDiaryContract.View {
         if (requestCode == REQUEST_CODE_PICKER && resultCode == RESULT_OK && data != null) {
             val images = data.getParcelableArrayListExtra<Image>("selectedImages")
             val img = images[0].path
-            Glide.with(this).load(images[0].path).into(binding.image)
+            val attachment = Attachment()
+            attachment.setData(TYPE_IMAGE,img)
+            attachmentAdapter.add(attachment)
+        /*    Glide.with(this).load(images[0].path).into(binding.image)
             val file = File(img)
-            val reqFile = RequestBody.create(MediaType.parse("image/*"), file)
-            binding.image.visibility = View.VISIBLE
+            val reqFile = RequestBody.create(MediaType.parse("image*//*"), file)
+            binding.image.visibility = View.VISIBLE*/
 //            imageBody = MultipartBody.Part.createFormData("ProfilePic", file.name, reqFile)
         }
     }
@@ -124,11 +127,13 @@ class AddDiaryActivity : BaseActivity(), AddDiaryContract.View {
         if (item.itemId == R.id.save) {
             return if (diaryId.compareTo(-1) == 0) {
                 presenter.saveDiary(binding.etTitle.text.toString(),
-                        binding.etDiary.text.toString(), selectedEmoji)
+                        binding.etDiary.text.toString(),
+                        selectedEmoji,attachmentAdapter.getAttachments())
                 true
             } else {
                 presenter.saveDiary(diaryId, binding.etTitle.text.toString(),
-                        binding.etDiary.text.toString(), selectedEmoji)
+                        binding.etDiary.text.toString(),
+                        selectedEmoji,attachmentAdapter.getAttachments())
                 true
             }
 
@@ -145,6 +150,8 @@ class AddDiaryActivity : BaseActivity(), AddDiaryContract.View {
         binding.etDiary.setText(diary.content)
         binding.etTitle.setText(diary.title)
         selectedEmoji = emojiAdapter.emojiClicked(diary.emoji.id)
+        attachmentAdapter.add(diary.attachments)
+
     }
 
 
